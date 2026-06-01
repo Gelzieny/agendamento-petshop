@@ -1,229 +1,369 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mundo Pet – Sistema de agendamento para pet shop. Visualize, adicione e remova atendimentos de forma fácil e rápida." />
-    <title>Mundo Pet – Agendamento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-      <div class="header__brand">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Mundo Pet – Sistema de agendamento para pet shop. Visualize, adicione e remova atendimentos de forma fácil e rápida."
+        />
+        <title>Mundo Pet – Agendamento</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <img src=".github\img\logo.svg" alt="Logo" />
+            <!--<div class="header__brand">
         <span class="header__logo" aria-hidden="true">🐾</span>
         <span class="header__name">MUNDO PET</span>
-      </div>
-    </header>
+      </div>-->
+        </header>
 
-    <!-- ===== MAIN ===== -->
-    <main class="main">
+        <!-- ===== MAIN ===== -->
+        <main class="main">
+            <!-- Page title + date picker -->
+            <section class="page-title" aria-labelledby="agenda-heading">
+                <div class="page-title__text">
+                    <h1 id="agenda-heading">Sua agenda</h1>
+                    <p>
+                        Aqui você pode ver todos os clientes e serviços
+                        agendados para hoje.
+                    </p>
+                </div>
 
-      <!-- Page title + date picker -->
-      <section class="page-title" aria-labelledby="agenda-heading">
-        <div class="page-title__text">
-          <h1 id="agenda-heading">Sua agenda</h1>
-          <p>Aqui você pode ver todos os clientes e serviços agendados para hoje.</p>
+                <div class="date-picker-wrapper">
+                    <button
+                        id="btn-date-picker"
+                        class="date-picker-btn"
+                        aria-label="Selecionar data"
+                        aria-expanded="false"
+                        aria-haspopup="dialog"
+                    >
+                        <span class="date-picker-btn__icon" aria-hidden="true"
+                            >📅</span
+                        >
+                        <span id="display-date" class="date-picker-btn__label"
+                            >--/--/----</span
+                        >
+                        <span
+                            class="date-picker-btn__chevron"
+                            aria-hidden="true"
+                            >▾</span
+                        >
+                    </button>
+                    <input
+                        type="date"
+                        id="native-date-input"
+                        class="native-date-input"
+                        aria-label="Escolha a data"
+                    />
+                </div>
+            </section>
+
+            <!-- Schedule sections -->
+            <div
+                id="schedule-container"
+                class="schedule-container"
+                role="list"
+                aria-label="Agendamentos"
+            >
+                <!-- Morning -->
+                <section
+                    id="section-manha"
+                    class="period-card"
+                    aria-labelledby="label-manha"
+                >
+                    <header class="period-card__header">
+                        <div class="period-card__info">
+                            <span class="period-card__icon" aria-hidden="true"
+                                >🌤️</span
+                            >
+                            <h2 id="label-manha" class="period-card__name">
+                                Manhã
+                            </h2>
+                        </div>
+                        <span class="period-card__range">09h–12h</span>
+                    </header>
+                    <ul
+                        id="list-manha"
+                        class="appointment-list"
+                        aria-label="Agendamentos da manhã"
+                    >
+                        <!-- appointments injected by JS -->
+                    </ul>
+                    <p id="empty-manha" class="empty-state" aria-live="polite">
+                        Nenhum agendamento neste período.
+                    </p>
+                </section>
+
+                <!-- Afternoon -->
+                <section
+                    id="section-tarde"
+                    class="period-card"
+                    aria-labelledby="label-tarde"
+                >
+                    <header class="period-card__header">
+                        <div class="period-card__info">
+                            <span class="period-card__icon" aria-hidden="true"
+                                >🍂</span
+                            >
+                            <h2 id="label-tarde" class="period-card__name">
+                                Tarde
+                            </h2>
+                        </div>
+                        <span class="period-card__range">13h–18h</span>
+                    </header>
+                    <ul
+                        id="list-tarde"
+                        class="appointment-list"
+                        aria-label="Agendamentos da tarde"
+                    ></ul>
+                    <p id="empty-tarde" class="empty-state" aria-live="polite">
+                        Nenhum agendamento neste período.
+                    </p>
+                </section>
+
+                <!-- Night -->
+                <section
+                    id="section-noite"
+                    class="period-card"
+                    aria-labelledby="label-noite"
+                >
+                    <header class="period-card__header">
+                        <div class="period-card__info">
+                            <span class="period-card__icon" aria-hidden="true"
+                                >🌙</span
+                            >
+                            <h2 id="label-noite" class="period-card__name">
+                                Noite
+                            </h2>
+                        </div>
+                        <span class="period-card__range">19h–21h</span>
+                    </header>
+                    <ul
+                        id="list-noite"
+                        class="appointment-list"
+                        aria-label="Agendamentos da noite"
+                    ></ul>
+                    <p id="empty-noite" class="empty-state" aria-live="polite">
+                        Nenhum agendamento neste período.
+                    </p>
+                </section>
+            </div>
+        </main>
+
+        <!-- ===== FAB – New Appointment ===== -->
+        <button
+            id="btn-new-appointment"
+            class="fab"
+            aria-label="Novo agendamento"
+        >
+            <span class="fab__icon" aria-hidden="true">＋</span>
+            <span>NOVO AGENDAMENTO</span>
+        </button>
+
+        <!-- ===== MODAL ===== -->
+        <div
+            id="modal-overlay"
+            class="modal-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+            hidden
+        >
+            <div class="modal" role="document">
+                <button
+                    id="btn-close-modal"
+                    class="modal__close"
+                    aria-label="Fechar modal"
+                >
+                    ✕
+                </button>
+
+                <h2 id="modal-title" class="modal__title">
+                    Agende um atendimento
+                </h2>
+                <p class="modal__subtitle">
+                    Preencha os dados do cliente para realizar o agendamento:
+                </p>
+
+                <form id="form-appointment" class="form" novalidate>
+                    <!-- Tutor name -->
+                    <div class="form-group">
+                        <label class="form-label" for="input-tutor"
+                            >Nome do tutor</label
+                        >
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true"
+                                >👤</span
+                            >
+                            <input
+                                id="input-tutor"
+                                class="form-input"
+                                type="text"
+                                placeholder="Helena Souza"
+                                autocomplete="name"
+                                required
+                            />
+                        </div>
+                        <span
+                            id="error-tutor"
+                            class="form-error"
+                            role="alert"
+                            aria-live="polite"
+                        ></span>
+                    </div>
+
+                    <!-- Pet name -->
+                    <div class="form-group">
+                        <label class="form-label" for="input-pet"
+                            >Nome do pet</label
+                        >
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true"
+                                >🐾</span
+                            >
+                            <input
+                                id="input-pet"
+                                class="form-input"
+                                type="text"
+                                placeholder="Cheddar"
+                                required
+                            />
+                        </div>
+                        <span
+                            id="error-pet"
+                            class="form-error"
+                            role="alert"
+                            aria-live="polite"
+                        ></span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label class="form-label" for="input-phone"
+                            >Telefone</label
+                        >
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true"
+                                >📞</span
+                            >
+                            <input
+                                id="input-phone"
+                                class="form-input"
+                                type="tel"
+                                placeholder="(00) 0 0000-0000"
+                                autocomplete="tel"
+                                required
+                            />
+                        </div>
+                        <span
+                            id="error-phone"
+                            class="form-error"
+                            role="alert"
+                            aria-live="polite"
+                        ></span>
+                    </div>
+
+                    <!-- Service description -->
+                    <div class="form-group">
+                        <label class="form-label" for="input-service"
+                            >Descrição do serviço</label
+                        >
+                        <textarea
+                            id="input-service"
+                            class="form-input form-textarea"
+                            placeholder="Banho e tosa"
+                            rows="3"
+                            required
+                        ></textarea>
+                        <span
+                            id="error-service"
+                            class="form-error"
+                            role="alert"
+                            aria-live="polite"
+                        ></span>
+                    </div>
+
+                    <!-- Date + Time row -->
+                    <div class="form-row">
+                        <div class="form-group form-group--half">
+                            <label class="form-label" for="input-date"
+                                >Data</label
+                            >
+                            <div class="input-wrapper input-wrapper--select">
+                                <span class="input-icon" aria-hidden="true"
+                                    >📅</span
+                                >
+                                <input
+                                    id="input-date"
+                                    class="form-input form-input--date"
+                                    type="date"
+                                    required
+                                />
+                                <span class="select-chevron" aria-hidden="true"
+                                    >▾</span
+                                >
+                            </div>
+                            <span
+                                id="error-date"
+                                class="form-error"
+                                role="alert"
+                                aria-live="polite"
+                            ></span>
+                        </div>
+
+                        <div class="form-group form-group--half">
+                            <label class="form-label" for="input-time"
+                                >Hora</label
+                            >
+                            <div class="input-wrapper input-wrapper--select">
+                                <span class="input-icon" aria-hidden="true"
+                                    >🕐</span
+                                >
+                                <select
+                                    id="input-time"
+                                    class="form-input form-select"
+                                    required
+                                >
+                                    <option value="">Selecione</option>
+                                </select>
+                                <span class="select-chevron" aria-hidden="true"
+                                    >▾</span
+                                >
+                            </div>
+                            <span
+                                id="error-time"
+                                class="form-error"
+                                role="alert"
+                                aria-live="polite"
+                            ></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btn-agendar">
+                        AGENDAR
+                    </button>
+                </form>
+            </div>
         </div>
 
-        <div class="date-picker-wrapper">
-          <button
-            id="btn-date-picker"
-            class="date-picker-btn"
-            aria-label="Selecionar data"
-            aria-expanded="false"
-            aria-haspopup="dialog"
-          >
-            <span class="date-picker-btn__icon" aria-hidden="true">📅</span>
-            <span id="display-date" class="date-picker-btn__label">--/--/----</span>
-            <span class="date-picker-btn__chevron" aria-hidden="true">▾</span>
-          </button>
-          <input
-            type="date"
-            id="native-date-input"
-            class="native-date-input"
-            aria-label="Escolha a data"
-          />
-        </div>
-      </section>
+        <!-- ===== TOAST ===== -->
+        <div
+            id="toast"
+            class="toast"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
 
-      <!-- Schedule sections -->
-      <div id="schedule-container" class="schedule-container" role="list" aria-label="Agendamentos">
-
-        <!-- Morning -->
-        <section id="section-manha" class="period-card" aria-labelledby="label-manha">
-          <header class="period-card__header">
-            <div class="period-card__info">
-              <span class="period-card__icon" aria-hidden="true">🌤️</span>
-              <h2 id="label-manha" class="period-card__name">Manhã</h2>
-            </div>
-            <span class="period-card__range">09h–12h</span>
-          </header>
-          <ul id="list-manha" class="appointment-list" aria-label="Agendamentos da manhã">
-            <!-- appointments injected by JS -->
-          </ul>
-          <p id="empty-manha" class="empty-state" aria-live="polite">Nenhum agendamento neste período.</p>
-        </section>
-
-        <!-- Afternoon -->
-        <section id="section-tarde" class="period-card" aria-labelledby="label-tarde">
-          <header class="period-card__header">
-            <div class="period-card__info">
-              <span class="period-card__icon" aria-hidden="true">🍂</span>
-              <h2 id="label-tarde" class="period-card__name">Tarde</h2>
-            </div>
-            <span class="period-card__range">13h–18h</span>
-          </header>
-          <ul id="list-tarde" class="appointment-list" aria-label="Agendamentos da tarde">
-          </ul>
-          <p id="empty-tarde" class="empty-state" aria-live="polite">Nenhum agendamento neste período.</p>
-        </section>
-
-        <!-- Night -->
-        <section id="section-noite" class="period-card" aria-labelledby="label-noite">
-          <header class="period-card__header">
-            <div class="period-card__info">
-              <span class="period-card__icon" aria-hidden="true">🌙</span>
-              <h2 id="label-noite" class="period-card__name">Noite</h2>
-            </div>
-            <span class="period-card__range">19h–21h</span>
-          </header>
-          <ul id="list-noite" class="appointment-list" aria-label="Agendamentos da noite">
-          </ul>
-          <p id="empty-noite" class="empty-state" aria-live="polite">Nenhum agendamento neste período.</p>
-        </section>
-
-      </div>
-    </main>
-
-    <!-- ===== FAB – New Appointment ===== -->
-    <button id="btn-new-appointment" class="fab" aria-label="Novo agendamento">
-      <span class="fab__icon" aria-hidden="true">＋</span>
-      <span>NOVO AGENDAMENTO</span>
-    </button>
-
-    <!-- ===== MODAL ===== -->
-    <div
-      id="modal-overlay"
-      class="modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-      hidden
-    >
-      <div class="modal" role="document">
-        <button id="btn-close-modal" class="modal__close" aria-label="Fechar modal">✕</button>
-
-        <h2 id="modal-title" class="modal__title">Agende um atendimento</h2>
-        <p class="modal__subtitle">Preencha os dados do cliente para realizar o agendamento:</p>
-
-        <form id="form-appointment" class="form" novalidate>
-
-          <!-- Tutor name -->
-          <div class="form-group">
-            <label class="form-label" for="input-tutor">Nome do tutor</label>
-            <div class="input-wrapper">
-              <span class="input-icon" aria-hidden="true">👤</span>
-              <input
-                id="input-tutor"
-                class="form-input"
-                type="text"
-                placeholder="Helena Souza"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <span id="error-tutor" class="form-error" role="alert" aria-live="polite"></span>
-          </div>
-
-          <!-- Pet name -->
-          <div class="form-group">
-            <label class="form-label" for="input-pet">Nome do pet</label>
-            <div class="input-wrapper">
-              <span class="input-icon" aria-hidden="true">🐾</span>
-              <input
-                id="input-pet"
-                class="form-input"
-                type="text"
-                placeholder="Cheddar"
-                required
-              />
-            </div>
-            <span id="error-pet" class="form-error" role="alert" aria-live="polite"></span>
-          </div>
-
-          <!-- Phone -->
-          <div class="form-group">
-            <label class="form-label" for="input-phone">Telefone</label>
-            <div class="input-wrapper">
-              <span class="input-icon" aria-hidden="true">📞</span>
-              <input
-                id="input-phone"
-                class="form-input"
-                type="tel"
-                placeholder="(00) 0 0000-0000"
-                autocomplete="tel"
-                required
-              />
-            </div>
-            <span id="error-phone" class="form-error" role="alert" aria-live="polite"></span>
-          </div>
-
-          <!-- Service description -->
-          <div class="form-group">
-            <label class="form-label" for="input-service">Descrição do serviço</label>
-            <textarea
-              id="input-service"
-              class="form-input form-textarea"
-              placeholder="Banho e tosa"
-              rows="3"
-              required
-            ></textarea>
-            <span id="error-service" class="form-error" role="alert" aria-live="polite"></span>
-          </div>
-
-          <!-- Date + Time row -->
-          <div class="form-row">
-            <div class="form-group form-group--half">
-              <label class="form-label" for="input-date">Data</label>
-              <div class="input-wrapper input-wrapper--select">
-                <span class="input-icon" aria-hidden="true">📅</span>
-                <input
-                  id="input-date"
-                  class="form-input form-input--date"
-                  type="date"
-                  required
-                />
-                <span class="select-chevron" aria-hidden="true">▾</span>
-              </div>
-              <span id="error-date" class="form-error" role="alert" aria-live="polite"></span>
-            </div>
-
-            <div class="form-group form-group--half">
-              <label class="form-label" for="input-time">Hora</label>
-              <div class="input-wrapper input-wrapper--select">
-                <span class="input-icon" aria-hidden="true">🕐</span>
-                <select id="input-time" class="form-input form-select" required>
-                  <option value="">Selecione</option>
-                </select>
-                <span class="select-chevron" aria-hidden="true">▾</span>
-              </div>
-              <span id="error-time" class="form-error" role="alert" aria-live="polite"></span>
-            </div>
-          </div>
-
-          <button type="submit" class="btn-submit" id="btn-agendar">AGENDAR</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- ===== TOAST ===== -->
-    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-    <script src="script.js"></script>
-  </body>
+        <script src="script.js"></script>
+    </body>
 </html>
