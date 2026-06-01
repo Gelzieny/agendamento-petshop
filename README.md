@@ -5,8 +5,6 @@
 <p align="center">Sistema de agendamento para pet shop — HTML · CSS · JavaScript</p>
 
 
----
-
 ## 📋 Sobre o projeto
 
 O **Mundo Pet** é uma aplicação web responsiva de agendamento para pet shops. A interface permite visualizar os atendimentos do dia organizados por período (Manhã, Tarde e Noite), adicionar novos agendamentos por meio de um modal e removê-los com um clique — tudo sem frameworks ou dependências externas.
@@ -18,7 +16,6 @@ O projeto foi desenvolvido como desafio prático da formação front-end, com fo
 - Design responsivo (mobile-first) com CSS Vanilla
 - Persistência de dados via `localStorage`
 
----
 
 ## ✨ Funcionalidades
 
@@ -47,7 +44,11 @@ O projeto foi desenvolvido como desafio prático da formação front-end, com fo
 | Validação em tempo real | Erros aparecem ao sair de cada campo (blur) |
 | Persistência | Agendamentos salvos no `localStorage` entre sessões |
 
----
+## 🔗 Links
+
+📘 [Acessar o layout no Figma](https://www.figma.com/design/lxMYjCMMPXsi5BfBAJMnZM/Agendamento-de-petshop--Community---Copy-?node-id=3-376&p=f&t=ip25YVBoLcDbznVv-0)
+
+🌐 [URL do projeto publicado](https://gelzieny.github.io/agendamento-petshop/)
 
 ## 📸 Preview
 
@@ -56,7 +57,6 @@ O projeto foi desenvolvido como desafio prático da formação front-end, com fo
   <img src="https://github.com/Gelzieny/agendamento-petshop/blob/main/.github/img/modal.png?raw=true" alt="Modal de novo agendamento" width="48%"/>
 </p>
 
----
 
 ## 🗂️ Estrutura do projeto
 
@@ -68,7 +68,6 @@ agendamento-petshop/
 └── README.md    # Documentação
 ```
 
----
 
 ## 🚀 Como executar
 
@@ -90,20 +89,17 @@ cd agendamento-petshop
 - Use a extensão **Live Server** no VS Code para recarregamento automático:
   > Clique com o botão direito em `index.html` → *Open with Live Server*
 
----
-
 ## 🖥️ Tecnologias
 
 <a href="https://skillicons.dev">
   <img src="https://skillicons.dev/icons?i=html,css,js,vscode,git,github" alt="HTML, CSS, JavaScript, VS Code, Git, GitHub"/>
 </a>
 
----
 
 ## 👩‍💻 Autora
 
 Feito com 💜 por **Gelzieny R. Martins**
 
----
+
 
 <p align="center">Desenvolvido como parte da formação front-end 💜</p>
